@@ -11,17 +11,14 @@ const dbConnection = async() => {
         //     useUnifiedTopology: true,
         //     useCreateIndex: true
         // });
-        mongoose.connect(process.env.BD_CNN, { useNewUrlParser: true, useUnifiedTopology: true })
-        .then(()=>{
-             console.log('La conexion es exitosa!');
-
-            //Crear servidor y escuchar peticiones HTTP
-            app.listen(port,()=>{
-            console.log('Servidor corriendo en HEROKU:'+port);
-        });
-
-    });
-
+        await connectionMongo().then( ()=> {
+            // Para estar escuchando cualquier información que venga del puerto 4000
+            app.listen( process.env.PORT, () => {
+                console.log(`Servidor run en el puerto ${ process.env.PORT }`);
+            });
+        }).catch((e) => {
+            console.log(e);
+        })
 
         console.log('DB Online');
 
