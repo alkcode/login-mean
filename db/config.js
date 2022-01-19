@@ -6,23 +6,11 @@ const dbConnection = async() => {
 
     try {
         
-        await mongoose.connect( process.env.BD_CNN, {
+        await mongoose.connect( process.env.CONNECTION, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
         });
-        // mongoose.set('useFindAndModify',false);
-        // mongoose.Promise=global.Promise;
-    //     await mongoose.connect(process.env.BD_CNN, { useNewUrlParser: true, useUnifiedTopology: true })
-    //     .then(()=>{
-    //         console.log('La conexion es exitosa!');
-
-    //     //Crear servidor y escuchar peticiones HTTP
-    //         app.listen(process.env.PORT,()=>{
-    //         console.log('Servidor corriendo');
-    //     });
-
-    // });
 
 
         console.log('DB Online');
