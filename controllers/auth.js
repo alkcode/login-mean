@@ -93,7 +93,8 @@ const loginUsuario = async(req, res = response) => {
 
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
+        console.log(console.log)
 
         return res.status(500).json({
             ok: false,
