@@ -13,7 +13,7 @@ const dbConnection = async() => {
         // });
         mongoose.set('useFindAndModify',false);
         mongoose.Promise=global.Promise;
-        mongoose.connect(process.env.BD_CNN, { useNewUrlParser: true, useUnifiedTopology: true })
+        await mongoose.connect(process.env.BD_CNN, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(()=>{
             console.log('La conexion es exitosa!');
 
