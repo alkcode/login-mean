@@ -6,11 +6,22 @@ const dbConnection = async() => {
 
     try {
         
-        await mongoose.connect( process.env.BD_CNN, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true
+        // await mongoose.connect( process.env.BD_CNN, {
+        //     useNewUrlParser: true,
+        //     useUnifiedTopology: true,
+        //     useCreateIndex: true
+        // });
+        mongoose.connect(process.env.BD_CNN, { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(()=>{
+             console.log('La conexion es exitosa!');
+
+            //Crear servidor y escuchar peticiones HTTP
+            app.listen(port,()=>{
+            console.log('Servidor corriendo en HEROKU:'+port);
         });
+
+    });
+
 
         console.log('DB Online');
 
